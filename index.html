@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halu Goods Smart Hub</title>
+    <link rel="icon" href="https://via.placeholder.com/32/9B0004/FFFFFF?text=HG" type="image/png">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; 
+            background-color: #FFFDF8; 
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <iframe id="gas-frame" src="https://script.google.com/macros/s/AKfycbwUl0LS6XEvU_yIxdyPX8eeR9KWg6YlHLgOtquYP-IVwDqdNP9i9P_0NOlkRj-CA3r3/exec" allowfullscreen></iframe>
+
+    <script>
+        window.onload = function() {
+            var urlParams = window.location.search;
+            var iframe = document.getElementById('gas-frame');
+            if (urlParams) {
+                iframe.src = iframe.src + urlParams;
+            }
+        };
+    </script>
+</body>
+</html>
