@@ -15,22 +15,11 @@
     <style>
         body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #FFFDF8; font-family: 'Segoe UI', sans-serif;}
         iframe { width: 100%; height: 100%; border: none; display: block; }
-        
-        .float-btn {
-            position: fixed; bottom: 30px; right: 20px; background: #9B0004; color: #ffffff;
-            padding: 12px 18px; border-radius: 25px; text-decoration: none; font-size: 13px; font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 9999; border: 2px solid #FFFDF8;
-        }
-        .float-btn:active { background: #7a0003; }
     </style>
 </head>
 <body>
 
-    <a id="fallback-link" href="https://script.google.com/macros/s/AKfycbwUl0LS6XEvU_yIxdyPX8eeR9KWg6YlHLgOtquYP-IVwDqdNP9i9P_0NOlkRj-CA3r3/exec" target="_blank" class="float-btn">
-        🚀 Buka Sistem (Jika Layar Blank)
-    </a>
-
-    <!-- Iframe dengan allow="clipboard-read; clipboard-write" (PENTING) -->
+    <!-- Iframe dengan allow="clipboard-read; clipboard-write" -->
     <iframe id="gas-frame" 
             src="https://script.google.com/macros/s/AKfycbwUl0LS6XEvU_yIxdyPX8eeR9KWg6YlHLgOtquYP-IVwDqdNP9i9P_0NOlkRj-CA3r3/exec" 
             allowfullscreen
@@ -39,13 +28,12 @@
     </iframe>
 
     <script>
+        // Fungsi membaca parameter URL tetap dipertahankan
         window.onload = function() {
             var urlParams = window.location.search;
             var iframe = document.getElementById('gas-frame');
-            var fallbackLink = document.getElementById('fallback-link');
             if (urlParams) {
                 iframe.src = iframe.src + urlParams;
-                fallbackLink.href = fallbackLink.href + urlParams;
             }
         };
     </script>
