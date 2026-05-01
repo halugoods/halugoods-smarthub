@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Halu Goods Smart Hub</title>
     
+    <!-- Meta untuk Android & Umum -->
     <link rel="icon" type="image/png" href="logo.png">
-    <meta name="theme-color" content="#9B0004"> <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#9B0004"> <!-- Warna Merah Sangria di Bar HP -->
+
+    <!-- Meta khusus untuk iOS (iPhone/iPad) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Smart Hub">
     <link rel="apple-touch-icon" href="logo.png">
@@ -14,23 +18,55 @@
     <style>
         body, html {
             margin: 0; padding: 0; height: 100%; overflow: hidden; 
-            background-color: #FFFDF8; 
+            background-color: #FFFDF8; font-family: 'Segoe UI', sans-serif;
         }
         iframe {
             width: 100%; height: 100%; border: none; display: block;
         }
+        
+        /* Tombol Evakuasi Anti-Error khusus Crew */
+        .float-btn {
+            position: fixed; 
+            bottom: 30px; 
+            right: 20px; 
+            background: #9B0004; /* Merah Sangria */
+            color: #ffffff;
+            padding: 12px 18px; 
+            border-radius: 25px; 
+            text-decoration: none; 
+            font-size: 13px; 
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+            z-index: 9999; 
+            border: 2px solid #FFFDF8;
+        }
+        .float-btn:active { background: #7a0003; }
     </style>
 </head>
 <body>
 
-    <iframe id="gas-frame" src="https://script.google.com/macros/s/AKfycbwUl0LS6XEvU_yIxdyPX8eeR9KWg6YlHLgOtquYP-IVwDqdNP9i9P_0NOlkRj-CA3r3/exec" allowfullscreen></iframe>
+    <!-- Tombol Penyelamat untuk Crew -->
+    <a id="fallback-link" href="https://script.google.com/macros/s/AKfycbwUl0LS6XEvU_yIxdyPX8eeR9KWg6YlHLgOtquYP-IVwDqdNP9i9P_0NOlkRj-CA3r3/exec" target="_blank" class="float-btn">
+        🚀 Buka Sistem (Jika Layar Blank)
+    </a>
+
+    <!-- Iframe dengan izin keamanan maksimal -->
+    <iframe id="gas-frame" 
+            src="https://script.google.com/macros/s/AKfycbwUl0LS6XEvU_yIxdyPX8eeR9KWg6YlHLgOtquYP-IVwDqdNP9i9P_0NOlkRj-CA3r3/exec" 
+            allowfullscreen
+            sandbox="allow-scripts allow-top-navigation allow-top-navigation-by-user-activation allow-forms allow-same-origin allow-popups allow-downloads">
+    </iframe>
 
     <script>
+        // Script untuk memastikan jika ada parameter URL, tombol dan iframe tetap membawanya
         window.onload = function() {
             var urlParams = window.location.search;
             var iframe = document.getElementById('gas-frame');
+            var fallbackLink = document.getElementById('fallback-link');
+            
             if (urlParams) {
                 iframe.src = iframe.src + urlParams;
+                fallbackLink.href = fallbackLink.href + urlParams;
             }
         };
     </script>
